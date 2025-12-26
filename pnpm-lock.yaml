@@ -1,0 +1,17 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .: {}
+
+  packages/qc-hooks:
+    dependencies:
+      '@qincai/libs':
+        specifier: workspace:^
+        version: link:../qc-libs
+
+  packages/qc-libs: {}
