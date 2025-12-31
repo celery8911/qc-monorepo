@@ -1,0 +1,68 @@
+# Release 发布工作流
+# 作用：自动创建版本发布 PR 或发布包到 npm
+name: Release
+
+# 触发条件：只在推送到 main 分支时触发
+on:
+  push:
+    branches:
+      - main
+
+# 并发控制：同一分支同时只运行一个发布任务
+# 防止多个发布任务同时运行造成冲突
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      # 步骤1: 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 步骤2: 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.0.0
+
+      # 步骤3: 安装 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      # 步骤4: 安装依赖
+      - name: Install dependencies
+        run: pnpm install
+
+      # 步骤5: Changesets 自动化发布
+      # 这是核心步骤！会做两件事之一：
+      # 1. 如果有 changeset: 创建一个 "Version Packages" PR，包含版本升级
+      # 2. 如果 PR 被合并: 自动发布包到 npm
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # 版本升级命令：运行 pnpm version-packages
+          version: pnpm version-packages
+
+          # 发布命令：运行 pnpm release（构建 + 发布）
+          publish: pnpm release
+
+          # 自动生成的版本 PR 的 commit 信息
+          commit: 'chore: version packages'
+
+          # 自动生成的版本 PR 的标题
+          title: 'chore: version packages'
+        env:
+          # GitHub Token: 用于创建 PR 和 tag
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # NPM Token: 用于发布包到 npm
+          # 需要在 GitHub 仓库设置中添加这个 secret
+          # 路径: Settings > Secrets and variables > Actions > New repository secret
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

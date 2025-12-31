@@ -1,7 +1,22 @@
+# Dependencies
 node_modules/
-.DS_Store
-*.log
+
+# Build outputs
 dist/
 build/
+
+# Turborepo
+.turbo
+
+# Environment
 .env
 .env.local
+
+# NPM 认证（包含敏感信息）
+.npmrc.local
+
+# OS
+.DS_Store
+
+# Logs
+*.log

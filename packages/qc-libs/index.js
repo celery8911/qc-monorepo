@@ -1,2 +1,2 @@
-const data = "I'm celery"
+const data = "I'm celery - updated!"
 module.exports = data

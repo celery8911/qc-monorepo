@@ -1,9 +1,10 @@
 {
   "name": "@qincai/hooks",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "mkdir -p dist && cp index.js dist/ && echo '✅ qc-hooks 构建完成（依赖 qc-libs）！'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

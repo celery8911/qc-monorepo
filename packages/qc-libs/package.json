@@ -1,9 +1,10 @@
 {
   "name": "@qincai/libs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "mkdir -p dist && cp index.js dist/ && echo '✅ qc-libs 构建完成！'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
