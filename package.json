@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "private": true,
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@8.6.2",
   "author": "",
   "license": "ISC",
   "type": "commonjs",

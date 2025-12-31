@@ -24,7 +24,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2  # pnpm 官方 action
         with:
-          version: 9.0.0  # 指定 pnpm 版本，与 package.json 中保持一致
+          version: 8.6.2  # 指定 pnpm 版本，与 package.json 中保持一致
 
       # 步骤3: 安装 Node.js
       - name: Setup Node.js
