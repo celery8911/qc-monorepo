@@ -9,11 +9,12 @@
     "lint": "turbo run lint",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "release": "turbo run build && changeset publish",
+    "release:local": "turbo run build && changeset publish --registry http://localhost:4873/ --no-git-checks"
   },
   "keywords": [],
   "private": true,
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@8.6.2",
   "author": "",
   "license": "ISC",
   "type": "commonjs",
