@@ -15,6 +15,9 @@ build/
 # NPM 认证（包含敏感信息）
 .npmrc.local
 
+# GitHub 配置指南（包含 token）
+GITHUB_SETUP.md
+
 # OS
 .DS_Store
 
