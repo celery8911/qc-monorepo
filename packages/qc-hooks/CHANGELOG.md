@@ -1,5 +1,16 @@
 # @qincai/hooks
 
+## 2.2.0
+
+### Minor Changes
+
+- test
+
+### Patch Changes
+
+- Updated dependencies
+  - @qincai/libs@3.1.0
+
 ## 2.1.0
 
 ### Minor Changes
