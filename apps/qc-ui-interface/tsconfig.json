@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    // 🎯 编译目标和模块系统
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    // ⚛️ React 配置
+    "jsx": "react-jsx",
+
+    // 🔍 模块解析
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    // ✅ 类型检查
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // 📁 路径配置
+    "baseUrl": ".",
+    "paths": {
+      "@qincai/ui": ["../../packages/qc-ui/src"],
+      "@qincai/ui/*": ["../../packages/qc-ui/src/*"]
+    }
+  },
+  "include": [
+    "stories/**/*",
+    ".storybook/**/*",
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "storybook-static"
+  ]
+}
