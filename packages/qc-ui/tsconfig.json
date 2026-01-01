@@ -1,105 +1,62 @@
 {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  // 📚 TypeScript 配置文件
+  // 📦 qc-ui - React UI 组件库配置
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  // 定义 TypeScript 编译器的行为和规则
+
+  /**
+   * 🎯 配置说明
+   *
+   * qc-ui 是 React UI 组件库
+   * - 继承 Monorepo 基础配置
+   * - 添加 JSX 支持（react-jsx）
+   * - 保留 DOM 库（React 组件需要）
+   */
+
+  // 继承基础配置
+  "extends": "../../tsconfig.base.json",
 
   "compilerOptions": {
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    // 🎯 目标环境配置
+    // ⚛️ React 特定配置
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    // 编译后的 JavaScript 版本（ES2020 支持现代浏览器）
-    "target": "ES2020",
-
-    // 生成的模块系统（ESNext 表示最新的 ES 模块）
-    "module": "ESNext",
-
-    // 可用的内置库（ES2020 + DOM API）
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    // 📦 模块解析配置
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-    // 模块解析策略（bundler 适用于 Vite/Webpack 等打包工具）
-    "moduleResolution": "bundler",
-
-    // 允许导入 JSON 文件
-    "resolveJsonModule": true,
-
-    // 允许导入带 .ts 扩展名的文件（开发时）
-    // 注意：构建时会被禁用以生成 .d.ts 文件
-    // "allowImportingTsExtensions": true,
-
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    // ⚛️ React / JSX 配置
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-    // JSX 转换模式（react-jsx 使用新的自动导入模式，无需手动导入 React）
+    /**
+     * jsx: JSX 转换模式
+     *
+     * react-jsx（React 17+ 新 JSX 转换）：
+     * - 自动导入 jsx-runtime
+     * - 不需要手动 import React
+     */
     "jsx": "react-jsx",
-
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    // 🔒 类型检查严格度
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-    // 开启所有严格类型检查选项
-    "strict": true,
-
-    // 检查未使用的局部变量
-    "noUnusedLocals": true,
-
-    // 检查未使用的参数
-    "noUnusedParameters": true,
-
-    // 检查 switch 语句中的 fallthrough（缺少 break）
-    "noFallthroughCasesInSwitch": true,
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     // 📤 输出配置
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    // 生成类型声明文件（.d.ts）
     "declaration": true,
-
-    // 输出目录
     "outDir": "./dist",
-
-    // 源代码根目录
     "rootDir": "./src",
 
-    // 仅生成声明文件（.d.ts），JS 由 Vite 负责构建
-    "emitDeclarationOnly": true,
-
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    // 🔧 其他配置
-    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-    // 跳过库文件的类型检查（加快编译速度）
-    "skipLibCheck": true,
-
-    // 支持 CommonJS 和 ES Module 互操作
-    "esModuleInterop": true,
-
-    // 允许默认导入（import React from 'react'）
-    "allowSyntheticDefaultImports": true,
-
-    // 强制文件名大小写一致
-    "forceConsistentCasingInFileNames": true
+    /**
+     * emitDeclarationOnly: 仅生成类型声明文件
+     *
+     * 工作流：
+     * - Vite 负责生成 JS 文件
+     * - TypeScript 只生成 .d.ts 文件
+     */
+    "emitDeclarationOnly": true
   },
 
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  // 📂 包含和排除的文件
-  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // 包含 src 目录下的所有文件
+  "include": ["src/**/*"],
 
-  // 包含的文件和目录
-  "include": [
-    "src/**/*"           // src 目录下的所有文件
-  ],
-
-  // 排除的文件和目录
+  // 排除不需要编译的文件
   "exclude": [
-    "node_modules",      // 依赖包
-    "dist"               // 构建输出
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }
