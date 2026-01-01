@@ -5,6 +5,8 @@
   "description": "Storybook 展示界面 - 展示 @qincai/ui 组件库",
   "type": "module",
   "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
