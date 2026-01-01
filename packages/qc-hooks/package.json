@@ -1,17 +1,50 @@
 {
   "name": "@qincai/hooks",
   "version": "2.2.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "mkdir -p dist && cp index.js dist/ && echo '✅ qc-hooks 构建完成（依赖 qc-libs）！'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "React Hooks 工具库",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
   },
-  "keywords": [],
+  "publishConfig": {
+    "main": "./dist/index.es.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.es.js"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && tsc --declaration --emitDeclarationOnly --outDir dist",
+    "dev": "vite",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "immer",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0"
+  },
   "dependencies": {
-    "@qincai/libs": "workspace:^"
+    "immer": "^11.1.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.7"
   }
 }

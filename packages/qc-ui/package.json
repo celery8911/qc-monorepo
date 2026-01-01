@@ -22,7 +22,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --declaration --emitDeclarationOnly --outDir dist && vite build",
+    "build": "vite build && tsc --declaration --emitDeclarationOnly --outDir dist",
     "dev": "vite",
     "prepublishOnly": "pnpm run build"
   },
