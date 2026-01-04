@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web3 钱包管理应用 - 安全、便捷、实时的区块链钱包管理工具">
+  <meta name="theme-color" content="#3b82f6">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       📊 Google Analytics（生产环境）
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+       为什么需要 GA？
+       1. 收集用户行为数据（路由跳转、页面停留时间等）
+       2. 为 Guess.js 提供训练数据
+       3. 优化产品决策
+
+       配置方式：
+       1. 获取 Google Analytics Measurement ID
+          - 登录 https://analytics.google.com
+          - Admin → Data Streams → 获取 Measurement ID（G-XXXXXXXXXX）
+       2. 设置环境变量：GA_MEASUREMENT_ID=G-XXXXXXXXXX
+       3. 构建时自动注入
+
+       隐私说明：
+       - 仅在生产环境启用
+       - 符合 GDPR 要求（需配置 Cookie 同意横幅）
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+  <% if (htmlWebpackPlugin.options.gaId) { %>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= htmlWebpackPlugin.options.gaId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= htmlWebpackPlugin.options.gaId %>', {
+      // 配置项（可选）
+      'anonymize_ip': true,  // IP 匿名化（GDPR 要求）
+      'send_page_view': true, // 自动发送页面浏览
+    });
+
+    // SPA 路由追踪
+    // 配合 React Router 追踪单页应用的路由变化
+    window.addEventListener('popstate', function() {
+      gtag('event', 'page_view', {
+        page_path: window.location.pathname + window.location.search
+      });
+    });
+  </script>
+  <% } %>
+
+  <title>Web3 钱包管理中心</title>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+
+  <% if (!htmlWebpackPlugin.options.gaId) { %>
+  <!-- ⚠️ Google Analytics 未配置 -->
+  <!-- 设置环境变量 GA_MEASUREMENT_ID 以启用数据收集 -->
+  <script>
+    console.warn('[GA] Google Analytics 未配置，无法收集数据。');
+    console.warn('[GA] 设置环境变量 GA_MEASUREMENT_ID=G-XXXXXXXXXX 以启用。');
+  </script>
+  <% } %>
+</body>
+</html>

@@ -161,14 +161,11 @@
      * declaration: 生成类型声明文件（.d.ts）
      *
      * ✅ 库项目必须开启
+     *
+     * 注意：outDir 和 rootDir 由各子包自己配置
+     * 因为不同包的目录结构可能不同
      */
-    "declaration": true,
-
-    /**
-     * outDir 和 rootDir: 子包会根据自己的结构覆盖
-     */
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "declaration": true
   },
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
