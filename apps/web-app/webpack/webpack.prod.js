@@ -8,6 +8,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const { GuessPlugin } = require('guess-webpack');
+const RouteManifest = require('webpack-route-manifest');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -233,7 +234,71 @@ module.exports = merge(common, {
 
   plugins: [
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    // 0️⃣ Guess.js 智能预测加载（面试亮点）
+    // 0️⃣ webpack-route-manifest - 为 Quicklink 生成路由映射
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    /**
+     * webpack-route-manifest 工作原理：
+     *
+     * 1. 扫描 React.lazy() 导入的路由组件
+     * 2. 将路由路径映射到对应的 chunk 文件
+     * 3. 生成 rmanifest.json 文件
+     * 4. Quicklink 使用此文件预加载正确的 chunk
+     *
+     * 为什么需要这个插件？
+     * - Quicklink 本身只能预加载 <a> 标签的 href
+     * - SPA 中，/wallets 不是实际文件，而是客户端路由
+     * - 需要映射：/wallets → /js/wallets.chunk.js
+     * - 这个插件自动完成映射，无需手动维护
+     *
+     * 面试话术：
+     * "在 SPA 中使用 Quicklink 需要 webpack-route-manifest
+     * 将路由路径映射到实际的 chunk 文件，实现智能预加载"
+     */
+    new RouteManifest({
+      /**
+       * routes 函数：动态将 import 路径映射到 URL 路由
+       *
+       * 参数 str: webpack识别的import路径
+       * 例如: './pages/Home' 或 './src/pages/Home/index.tsx'
+       *
+       * 返回值: URL 路由路径，或 falsy 值跳过该路由
+       */
+      routes(str) {
+        // 提取页面名称（支持多种路径格式）
+        let pageName = str
+          .replace(/^\.\//, '') // 移除开头的 ./
+          .replace(/src\/pages\//, '') // 移除 src/pages/
+          .replace(/pages\//, '') // 移除 pages/
+          .replace(/\/index\.(tsx|ts|jsx|js)$/, '') // 移除 /index.xxx
+          .replace(/\.(tsx|ts|jsx|js)$/, '') // 移除 .xxx
+          .toLowerCase();
+
+        // 特殊路由映射
+        if (pageName === 'home' || pageName === '') return '/';
+        if (pageName === 'walletlist') return '/wallets';
+        if (pageName === 'walletdetail') return '/wallet/:address';
+        if (pageName === 'transactiondetail') return '/transaction/:hash';
+        if (pageName === 'settings') return '/settings';
+
+        // 默认：使用页面名作为路由
+        return `/${pageName}`;
+      },
+
+      /**
+       * 输出配置
+       *
+       * - filename: 输出文件名（默认 manifest.json）
+       * - inline: 是否内联到 window.__rmanifest（推荐 true）
+       * - minify: 是否压缩 JSON（生产环境推荐 true）
+       */
+      filename: 'rmanifest.json',
+      inline: true,
+      minify: true,
+    }),
+
+    // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    // 1️⃣ Guess.js 智能预测加载（面试亮点）
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     /**
