@@ -16,7 +16,7 @@ import './styles/global.css';
  * - 避免影响首屏加载性能
  * - 确保主应用资源已加载完成
  */
-if ('serviceWorker' in navigator) {
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/service-worker.js')
