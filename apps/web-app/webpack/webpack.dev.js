@@ -143,8 +143,8 @@ module.exports = merge(common, {
             jsc: {
               transform: {
                 react: {
-                  development: true,  // 开发模式
-                  refresh: true,      // 启用 React Fast Refresh
+                  development: true, // 开发模式
+                  refresh: true, // 启用 React Fast Refresh
                 },
               },
             },

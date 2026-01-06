@@ -135,9 +135,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           // 开发环境使用 style-loader（HMR），生产环境使用 MiniCssExtractPlugin
-          process.env.NODE_ENV === 'production'
-            ? MiniCssExtractPlugin.loader
-            : 'style-loader',
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -211,9 +209,10 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       // 根据环境选择不同的 HTML 模板
-      template: process.env.NODE_ENV === 'production'
-        ? './public/index-prod.html'
-        : './public/index-dev.html',
+      template:
+        process.env.NODE_ENV === 'production'
+          ? './public/index-prod.html'
+          : './public/index-dev.html',
 
       inject: 'body', // 将脚本注入到 <body> 底部
       scriptLoading: 'defer', // 使用 defer 加载脚本（不阻塞 HTML 解析）
@@ -247,20 +246,21 @@ module.exports = {
         };
       },
 
-      minify: process.env.NODE_ENV === 'production'
-        ? {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true,
-            removeEmptyAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            keepClosingSlash: true,
-            minifyJS: true,
-            minifyCSS: true,
-            minifyURLs: true,
-          }
-        : false
+      minify:
+        process.env.NODE_ENV === 'production'
+          ? {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true,
+            }
+          : false,
     }),
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

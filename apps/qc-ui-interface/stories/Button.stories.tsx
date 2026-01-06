@@ -2,9 +2,9 @@
 // 📚 Button Story 文件
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+import { Button } from '@qincai/ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from '@storybook/test';
-import { Button } from '@qincai/ui';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 📖 元数据配置
@@ -136,28 +136,13 @@ export const WithIcons: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <Button variant="primary">
-        <svg
-          className="w-5 h-5 mr-2"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 4v16m8-8H4"
-          />
+        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
         </svg>
         添加
       </Button>
       <Button variant="outline">
-        <svg
-          className="w-5 h-5 mr-2"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"

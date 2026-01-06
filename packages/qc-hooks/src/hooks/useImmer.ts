@@ -2,8 +2,8 @@
 // 📦 useImmer Hook - 让状态更新像操作普通对象一样简单
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-import { useState, useCallback } from 'react';
-import { produce, Draft, freeze } from 'immer';
+import { Draft, freeze, produce } from 'immer';
+import { useCallback, useState } from 'react';
 
 /**
  * 🎯 什么是 useImmer？
@@ -61,9 +61,7 @@ type SetImmerState<T> = (updater: T | DraftFunction<T>) => void;
  * 2. 包装 setState 函数，使其支持 Immer 的 produce 功能
  * 3. 使用 useCallback 优化性能，避免不必要的重新创建
  */
-export function useImmer<T>(
-  initialValue: T | (() => T)
-): [T, SetImmerState<T>] {
+export function useImmer<T>(initialValue: T | (() => T)): [T, SetImmerState<T>] {
   /**
    * 1️⃣ 使用标准的 useState 存储状态，并冻结初始值
    *
@@ -78,10 +76,7 @@ export function useImmer<T>(
    * user.name = 'Bob';  // ❌ 开发环境抛错：Cannot assign to read only property
    */
   const [state, setState] = useState(() =>
-    freeze(
-      typeof initialValue === 'function' ? (initialValue as () => T)() : initialValue,
-      true
-    )
+    freeze(typeof initialValue === 'function' ? (initialValue as () => T)() : initialValue, true),
   );
 
   // 2️⃣ 创建增强版的 setState 函数

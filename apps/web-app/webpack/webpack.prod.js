@@ -266,7 +266,7 @@ module.exports = merge(common, {
        */
       routes(str) {
         // 提取页面名称（支持多种路径格式）
-        let pageName = str
+        const pageName = str
           .replace(/^\.\//, '') // 移除开头的 ./
           .replace(/src\/pages\//, '') // 移除 src/pages/
           .replace(/pages\//, '') // 移除 pages/
@@ -364,7 +364,7 @@ module.exports = merge(common, {
         if (customReportUrl) {
           // 从自己的服务器获取用户行为分析数据
           return fetch(customReportUrl)
-            .then(res => res.json())
+            .then((res) => res.json())
             .catch(() => {
               console.log('[Guess.js] 自定义数据源不可用，降级到静态配置');
               return {};
@@ -493,8 +493,8 @@ module.exports = merge(common, {
       swSrc: './src/workers/service-worker.ts',
       swDest: 'service-worker.js',
       exclude: [
-        /\.map$/,               // SourceMap
-        /^manifest.*\.js$/,     // Webpack manifest
+        /\.map$/, // SourceMap
+        /^manifest.*\.js$/, // Webpack manifest
       ],
       maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
     }),
@@ -513,8 +513,8 @@ module.exports = merge(common, {
    * - 超过时提示优化（拆分、懒加载）
    */
   performance: {
-    maxEntrypointSize: 512000,  // 入口文件最大 500KB
-    maxAssetSize: 512000,        // 资源文件最大 500KB
-    hints: 'warning',            // 超过时显示警告
+    maxEntrypointSize: 512000, // 入口文件最大 500KB
+    maxAssetSize: 512000, // 资源文件最大 500KB
+    hints: 'warning', // 超过时显示警告
   },
 });

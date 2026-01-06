@@ -59,11 +59,7 @@ export function TodoListExample() {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => toggleTodo(todo.id)}
-            />
+            <input type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
             <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
               {todo.text}
             </span>
@@ -248,9 +244,7 @@ export function GameStateExample() {
         {game.players.map((player) => (
           <li key={player.id}>
             {player.name} - 分数: {player.score}
-            <button onClick={() => addScoreAndItem(player.id, 10, '宝箱')}>
-              获得奖励
-            </button>
+            <button onClick={() => addScoreAndItem(player.id, 10, '宝箱')}>获得奖励</button>
             <div>背包: {player.inventory.join(', ')}</div>
           </li>
         ))}

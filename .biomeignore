@@ -1,0 +1,14 @@
+# CSS files with Tailwind directives
+*.css
+
+# HTML template files
+*.html
+
+# Build outputs
+dist
+build
+.turbo
+storybook-static
+
+# Dependencies
+node_modules

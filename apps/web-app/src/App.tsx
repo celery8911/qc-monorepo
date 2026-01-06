@@ -2,9 +2,9 @@
 // 📱 根组件
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { withQuicklink } from 'quicklink/dist/react/hoc.js';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 🔄 路由级代码分割（懒加载）+ Quicklink 预加载
@@ -49,11 +49,26 @@ const quicklinkOptions = {
  * - 按需加载，节省带宽
  * - 智能预加载，提升导航速度
  */
-const Home = withQuicklink(lazy(() => import('./pages/Home')), quicklinkOptions);
-const WalletList = withQuicklink(lazy(() => import('./pages/WalletList')), quicklinkOptions);
-const WalletDetail = withQuicklink(lazy(() => import('./pages/WalletDetail')), quicklinkOptions);
-const TransactionDetail = withQuicklink(lazy(() => import('./pages/TransactionDetail')), quicklinkOptions);
-const Settings = withQuicklink(lazy(() => import('./pages/Settings')), quicklinkOptions);
+const Home = withQuicklink(
+  lazy(() => import('./pages/Home')),
+  quicklinkOptions,
+);
+const WalletList = withQuicklink(
+  lazy(() => import('./pages/WalletList')),
+  quicklinkOptions,
+);
+const WalletDetail = withQuicklink(
+  lazy(() => import('./pages/WalletDetail')),
+  quicklinkOptions,
+);
+const TransactionDetail = withQuicklink(
+  lazy(() => import('./pages/TransactionDetail')),
+  quicklinkOptions,
+);
+const Settings = withQuicklink(
+  lazy(() => import('./pages/Settings')),
+  quicklinkOptions,
+);
 
 // 加载中组件
 function LoadingSpinner() {

@@ -4,11 +4,7 @@
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import {
-  getPredictedRoutes,
-  shouldPrefetch,
-  type RoutePrediction,
-} from '../routes/routeConfig';
+import { getPredictedRoutes, type RoutePrediction, shouldPrefetch } from '../routes/routeConfig';
 
 /**
  * 预测式预加载 Hook
@@ -45,23 +41,16 @@ export function usePrefetch() {
       return;
     }
 
-    console.log(
-      `[Prefetch] 当前路由：${location.pathname}，预测路由：`,
-      predictions,
-    );
+    console.log(`[Prefetch] 当前路由：${location.pathname}，预测路由：`, predictions);
 
     // 处理 immediate 类型的预加载
-    const immediatePredictions = predictions.filter(
-      (p) => p.preloadTiming === 'immediate',
-    );
+    const immediatePredictions = predictions.filter((p) => p.preloadTiming === 'immediate');
     immediatePredictions.forEach((prediction) => {
       prefetchRoute(prediction);
     });
 
     // 处理 idle 类型的预加载
-    const idlePredictions = predictions.filter(
-      (p) => p.preloadTiming === 'idle',
-    );
+    const idlePredictions = predictions.filter((p) => p.preloadTiming === 'idle');
 
     if (idlePredictions.length > 0) {
       // 使用 requestIdleCallback 在浏览器空闲时预加载
@@ -133,9 +122,5 @@ function getComponentNameFromPath(path: string): string {
   const cleanPath = path.replace(/:[^/]+/g, '').replace(/\/$/, '');
 
   // 转换为 kebab-case
-  return cleanPath
-    .split('/')
-    .filter(Boolean)
-    .join('-')
-    .toLowerCase() || 'home';
+  return cleanPath.split('/').filter(Boolean).join('-').toLowerCase() || 'home';
 }

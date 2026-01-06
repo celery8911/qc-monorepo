@@ -117,7 +117,9 @@ export const Button = ({
         ${sizeStyles[size]}
         ${widthStyles}
         ${className}
-      `.trim().replace(/\s+/g, ' ')}
+      `
+        .trim()
+        .replace(/\s+/g, ' ')}
       {...props}
     >
       {children}

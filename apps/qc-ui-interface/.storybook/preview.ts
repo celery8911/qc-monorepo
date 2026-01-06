@@ -6,12 +6,12 @@
 // - 装饰器（Decorators）
 // - 全局样式等
 
-import type { Preview } from '@storybook/react-vite'
+import type { Preview } from '@storybook/react-vite';
 
 // 🎨 导入 Tailwind CSS
 // 导入本地 Tailwind 样式文件
 // Tailwind 会扫描组件库和 stories 中的类名，生成需要的样式
-import '../src/index.css'
+import '../src/index.css';
 
 const preview: Preview = {
   // ⚙️ parameters：全局参数配置
@@ -36,8 +36,8 @@ const preview: Preview = {
       // - 'todo'：在测试 UI 中显示无障碍问题（不会失败）
       // - 'error'：在 CI 中遇到无障碍问题时失败
       // - 'off'：完全跳过无障碍检查
-      test: 'todo'
-    }
+      test: 'todo',
+    },
   },
 
   // 💡 可选配置（未使用）：

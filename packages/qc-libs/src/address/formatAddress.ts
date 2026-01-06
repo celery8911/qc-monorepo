@@ -101,10 +101,7 @@ export interface FormatAddressOptions {
  * // → '0x1234****5678'
  * ```
  */
-export function formatAddress(
-  address: string,
-  options: FormatAddressOptions = {}
-): string {
+export function formatAddress(address: string, options: FormatAddressOptions = {}): string {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // 1️⃣ 参数处理和验证
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -116,11 +113,7 @@ export function formatAddress(
    * - 如果 options.prefixLength 存在，使用它
    * - 否则使用默认值 6
    */
-  const {
-    prefixLength = 6,
-    suffixLength = 4,
-    ellipsis = '...',
-  } = options;
+  const { prefixLength = 6, suffixLength = 4, ellipsis = '...' } = options;
 
   /**
    * 参数验证

@@ -72,9 +72,9 @@
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   "include": [
-    "stories/**/*",      // Storybook 故事文件
-    ".storybook/**/*",   // Storybook 配置
-    "src/**/*"           // 源代码
+    "stories/**/*", // Storybook 故事文件
+    ".storybook/**/*", // Storybook 配置
+    "src/**/*" // 源代码
   ],
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -83,6 +83,6 @@
 
   "exclude": [
     "node_modules",
-    "storybook-static"   // Storybook 构建输出
+    "storybook-static" // Storybook 构建输出
   ]
 }

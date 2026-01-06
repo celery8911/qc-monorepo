@@ -7,7 +7,7 @@
 // - 使用什么构建工具（framework）
 
 import type { StorybookConfig } from '@storybook/react-vite';
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // ⚙️ Storybook 配置对象
@@ -18,8 +18,8 @@ const config: StorybookConfig = {
   // 1. .mdx 文件：用于编写文档页面
   // 2. .stories.{ts,tsx,js,jsx} 文件：组件的展示案例
   stories: [
-    "../stories/**/*.mdx",                           // MDX 文档
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"  // Story 文件
+    '../stories/**/*.mdx', // MDX 文档
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)', // Story 文件
   ],
 
   // 🧩 addons：Storybook 插件列表
@@ -38,7 +38,7 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
 
     // 🎓 Onboarding：新手引导
-    '@storybook/addon-onboarding'
+    '@storybook/addon-onboarding',
   ],
 
   // ⚡ framework：指定使用的框架和构建工具
@@ -55,7 +55,7 @@ const config: StorybookConfig = {
     config.plugins.push(tailwindcss());
 
     return config;
-  }
+  },
 };
 
 export default config;

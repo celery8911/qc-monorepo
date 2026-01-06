@@ -14,8 +14,8 @@
  * Vite 底层也是用 Rollup，但 Vite 主要面向应用开发
  */
 
-import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export default {
@@ -288,7 +288,7 @@ export default {
   external: [
     'react',
     'react-dom',
-    'react/jsx-runtime',  // React 17+ 的 JSX 运行时
+    'react/jsx-runtime', // React 17+ 的 JSX 运行时
     'immer',
   ],
 };

@@ -3,12 +3,11 @@
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 这个文件展示了 Card 组件的各种使用场景
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from '@storybook/test';
-
 // 🧩 导入 Card 组件
 // 从 @qincai/ui 包中导入组件
 import { Card } from '@qincai/ui';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from '@storybook/test';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 📖 元数据配置
@@ -83,7 +82,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: '产品标题',
-    description: '这是一个使用 Tailwind CSS 构建的卡片组件。支持多种样式变体、悬停效果和响应式布局。',
+    description:
+      '这是一个使用 Tailwind CSS 构建的卡片组件。支持多种样式变体、悬停效果和响应式布局。',
     variant: 'default',
     showActions: true,
   },
@@ -147,7 +147,8 @@ export const CustomButtons: Story = {
 export const TextOnly: Story = {
   args: {
     title: '产品特性介绍',
-    description: '我们的产品提供了强大的功能集合，包括自动化工作流、智能分析、实时协作等特性。无论是小团队还是大企业，都能找到适合的解决方案。点击下方按钮了解更多详情。',
+    description:
+      '我们的产品提供了强大的功能集合，包括自动化工作流、智能分析、实时协作等特性。无论是小团队还是大企业，都能找到适合的解决方案。点击下方按钮了解更多详情。',
     variant: 'default',
   },
 };

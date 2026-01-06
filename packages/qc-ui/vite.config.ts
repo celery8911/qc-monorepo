@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { defineConfig } from 'vite';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 📦 Vite 库构建配置
@@ -25,12 +25,7 @@ export default defineConfig({
     // 🎯 Rollup 配置
     rollupOptions: {
       // 外部化依赖（不打包进库）
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        '@radix-ui/react-dialog',
-      ],
+      external: ['react', 'react-dom', 'react/jsx-runtime', '@radix-ui/react-dialog'],
 
       // 输出配置
       output: {

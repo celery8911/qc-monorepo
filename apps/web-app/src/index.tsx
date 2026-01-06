@@ -30,14 +30,9 @@ if ('serviceWorker' in navigator) {
           if (newWorker) {
             newWorker.addEventListener('statechange', () => {
               // 新版本已安装但等待激活
-              if (
-                newWorker.state === 'installed' &&
-                navigator.serviceWorker.controller
-              ) {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                 // 提示用户刷新以使用新版本
-                if (
-                  confirm('发现新版本，是否立即刷新页面应用更新？')
-                ) {
+                if (confirm('发现新版本，是否立即刷新页面应用更新？')) {
                   window.location.reload();
                 }
               }
@@ -55,12 +50,10 @@ if ('serviceWorker' in navigator) {
 // ⚛️ React 应用挂载
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

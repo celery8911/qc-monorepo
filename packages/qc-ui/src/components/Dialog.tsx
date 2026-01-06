@@ -84,10 +84,10 @@ export const DialogComponent = ({
 }: DialogProps) => {
   // 🎨 根据 size 决定对话框宽度
   const sizeStyles = {
-    sm: 'max-w-sm',   // 24rem (384px)
-    md: 'max-w-md',   // 28rem (448px)
-    lg: 'max-w-lg',   // 32rem (512px)
-    xl: 'max-w-xl',   // 36rem (576px)
+    sm: 'max-w-sm', // 24rem (384px)
+    md: 'max-w-md', // 28rem (448px)
+    lg: 'max-w-lg', // 32rem (512px)
+    xl: 'max-w-xl', // 36rem (576px)
   };
 
   return (
@@ -96,7 +96,6 @@ export const DialogComponent = ({
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     // 这是整个对话框的容器，管理打开/关闭状态
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
-
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           🔘 Dialog.Trigger - 触发按钮
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -106,11 +105,7 @@ export const DialogComponent = ({
           - aria-expanded="true/false"
           - aria-controls="对话框ID"
       */}
-      {trigger && (
-        <Dialog.Trigger asChild>
-          {trigger}
-        </Dialog.Trigger>
-      )}
+      {trigger && <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           🌐 Dialog.Portal - React Portal
@@ -122,7 +117,6 @@ export const DialogComponent = ({
           3. 更容易管理遮罩层
       */}
       <Dialog.Portal>
-
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             🎭 Dialog.Overlay - 遮罩层
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -192,9 +186,7 @@ export const DialogComponent = ({
                   自动生成唯一 ID，并通过 aria-labelledby 关联到 Content
                   屏幕阅读器会读出："标题文字，对话框"
               */}
-              <Dialog.Title className="text-xl font-semibold text-gray-900">
-                {title}
-              </Dialog.Title>
+              <Dialog.Title className="text-xl font-semibold text-gray-900">{title}</Dialog.Title>
 
               {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                   📄 Dialog.Description - 描述
@@ -251,9 +243,7 @@ export const DialogComponent = ({
               📦 对话框主体内容
               ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           */}
-          <div className="py-4">
-            {children}
-          </div>
+          <div className="py-4">{children}</div>
 
           {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
               🔘 对话框页脚（操作按钮）

@@ -129,9 +129,7 @@ export function getPredictedRoutes(currentPath: string): RoutePrediction[] {
   const routeKey = Object.keys(routeConfigs).find((key) => {
     const config = routeConfigs[key];
     // 简单匹配：/wallet/:address 匹配 /wallet/0x123...
-    const regex = new RegExp(
-      '^' + config.path.replace(/:[^/]+/g, '[^/]+') + '$',
-    );
+    const regex = new RegExp('^' + config.path.replace(/:[^/]+/g, '[^/]+') + '$');
     return regex.test(currentPath);
   });
 
@@ -150,7 +148,7 @@ export function getPredictedRoutes(currentPath: string): RoutePrediction[] {
  * - 3G/2G/节省流量模式：禁用预加载
  */
 export function shouldPrefetch(): boolean {
-  // @ts-ignore - navigator.connection 是实验性 API
+  // @ts-expect-error - navigator.connection 是实验性 API
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
   if (!connection) {

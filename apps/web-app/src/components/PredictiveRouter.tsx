@@ -4,10 +4,7 @@
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import {
-  getPredictedRoutes,
-  shouldPrefetch,
-} from '../routes/routeConfig';
+import { getPredictedRoutes, shouldPrefetch } from '../routes/routeConfig';
 
 /**
  * PredictiveRouter 组件
@@ -82,8 +79,7 @@ export function PredictiveRouter({ children }: PredictiveRouterProps) {
 
               // 使用 requestIdleCallback 在浏览器空闲时预加载
               const idleCallback =
-                window.requestIdleCallback ||
-                ((cb: IdleRequestCallback) => setTimeout(cb, 1));
+                window.requestIdleCallback || ((cb: IdleRequestCallback) => setTimeout(cb, 1));
 
               idleCallback(() => {
                 prefetchRoute(href, 'viewport');
@@ -116,11 +112,7 @@ export function PredictiveRouter({ children }: PredictiveRouterProps) {
       return;
     }
 
-    console.log(
-      `[PredictiveRouter] 当前路由：${location.pathname}`,
-      `预测路由：`,
-      predictions,
-    );
+    console.log(`[PredictiveRouter] 当前路由：${location.pathname}`, `预测路由：`, predictions);
 
     // 处理 immediate 预加载
     predictions
@@ -130,14 +122,11 @@ export function PredictiveRouter({ children }: PredictiveRouterProps) {
       });
 
     // 处理 idle 预加载
-    const idlePredictions = predictions.filter(
-      (p) => p.preloadTiming === 'idle',
-    );
+    const idlePredictions = predictions.filter((p) => p.preloadTiming === 'idle');
 
     if (idlePredictions.length > 0) {
       const idleCallback =
-        window.requestIdleCallback ||
-        ((cb: IdleRequestCallback) => setTimeout(cb, 1));
+        window.requestIdleCallback || ((cb: IdleRequestCallback) => setTimeout(cb, 1));
 
       idleCallback(
         () => {
@@ -183,9 +172,7 @@ function prefetchRoute(path: string, timing: string) {
   const chunkName = getChunkNameFromPath(path);
 
   // 检查是否已经预加载过
-  const existingLink = document.querySelector(
-    `link[rel="prefetch"][data-route="${path}"]`,
-  );
+  const existingLink = document.querySelector(`link[rel="prefetch"][data-route="${path}"]`);
 
   if (existingLink) {
     console.log(`[PredictiveRouter] 路由已预加载：${path}`);
