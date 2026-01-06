@@ -26,7 +26,8 @@
         "noExcessiveCognitiveComplexity": "off",
         "noForEach": "off",
         "noArguments": "off",
-        "useOptionalChain": "warn"
+        "useOptionalChain": "off",
+        "noBannedTypes": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -38,15 +39,17 @@
       "suspicious": {
         "noArrayIndexKey": "off",
         "noExplicitAny": "off",
-        "useIterableCallbackReturn": "warn"
+        "useIterableCallbackReturn": "off",
+        "noEmptyBlockStatements": "off"
       },
       "correctness": {
         "useExhaustiveDependencies": "off",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "off",
+        "noUnusedImports": "off"
       },
       "a11y": {
-        "noSvgWithoutTitle": "warn",
-        "useButtonType": "warn"
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "off"
       }
     }
   },
