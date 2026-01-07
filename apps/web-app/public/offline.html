@@ -1,45 +1,91 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>离线模式 - Web3 钱包管理</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      text-align: center;
-      color: white;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-    .emoji {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="emoji">📡</div>
-    <h1>当前处于离线模式</h1>
-    <p>请检查您的网络连接后重试</p>
-    <p style="font-size: 0.9rem; margin-top: 2rem;">您可以访问已缓存的页面</p>
-  </div>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7fb;
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --accent: #111827;
+        --ring: rgba(17, 24, 39, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(1200px 600px at 20% -10%, #e8ecf5 0%, var(--bg) 55%);
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        color: var(--text);
+        padding: 24px;
+      }
+
+      .card {
+        width: min(520px, 92vw);
+        background: var(--card);
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        padding: 32px;
+        box-shadow: 0 20px 60px var(--ring);
+        text-align: center;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 auto 16px;
+        border-radius: 999px;
+        background: var(--accent);
+        opacity: 0.8;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.6rem;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 0 20px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      button {
+        appearance: none;
+        border: 0;
+        padding: 10px 18px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.08s ease, box-shadow 0.2s ease;
+        box-shadow: 0 6px 18px rgba(17, 24, 39, 0.25);
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card" role="main" aria-live="polite">
+      <div class="dot" aria-hidden="true"></div>
+      <h1>You're offline</h1>
+      <p>It looks like your connection is unavailable. Check your network and try again.</p>
+      <button type="button" onclick="location.reload()">Retry</button>
+    </main>
+  </body>
 </html>
